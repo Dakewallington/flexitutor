@@ -1,0 +1,199 @@
+/***********************************************
+	Global 
+***********************************************/
+
+.buttonGroupSpace
+{
+	text-align:end;
+}
+
+.bgColorBlue
+{
+	background-color: #3f51b5;	
+}
+.blackboards{
+	 background: -webkit-linear-gradient(right, #1d1d1d, #4d4d4d, #1d1d1d); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left , #1d1d1d, #4d4d4d, #1d1d1d); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #1d1d1d, #4d4d4d, #1d1d1d); /* For Firefox .6 to 15 */
+    background: linear-gradient(to left #1d1d1d, #4d4d4d, #1d1d1d); /* Standard syntax (must be last) */	
+}
+
+.iconSpacer
+{
+	margin-top:53px;	
+}
+.iconColor
+{
+		
+}
+
+#content
+{
+	color: #aca8ab;	
+}
+
+
+
+.active td
+{
+	
+	background-color: #18191e;
+	color: #FFF;	
+}
+.active td a
+{
+
+	background-color: #18191e;
+	color: #FFF;	
+}
+.userIcon
+{
+	margin-left: 15px;
+	margin-right: 5px;	
+}
+
+.menu 
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.menuSpacer
+{
+	padding-top: 25px;
+	padding-bottom: 5px;
+}
+
+.menuItem
+{
+	width: 200px;
+
+}
+
+.menuItem tr td span 
+{
+	font-size:14px;	
+}
+
+.textColorWhite
+{
+	color: #fff;	
+}
+
+.cards
+{
+	background-color:#f5f5f5;
+	border: 1px solid #bbc2c7;
+	border-bottom: solid 7px #bbc2c7;	
+}
+
+.noSelect
+{
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.op0
+{
+	display: none;
+}
+/************************************************
+	Color Tester
+************************************************/
+.box
+{
+	margin: 5px;	
+}
+
+.bgColorBlue
+{
+	backgound-color: #003171;
+}
+
+.bgColorGreen
+{
+	backgound-color: #26A65B;
+}
+
+.bgColorYellow
+{
+	backgound-color: #F7CA18;
+}
+
+.bgColorRed
+{
+	backgound-color: #C3272B;
+}
+
+.titleChecker
+{
+	color: #aca8ab;
+ 	height: 27px;	
+}
+
+
+/************************************************
+
+	Activity Lession
+
+************************************************/
+.fliper
+{
+	height: 569px;	
+}
+
+.sub
+{
+	margin-left: 25px;
+	margin-bottom: -0px;
+}
+
+.cardImage
+{
+	padding-bottom: 15px;
+		
+}
+
+audio
+{
+	margin-top: 5px;
+	margin-bottom: 15px;	
+}
+
+
+.cardImage img
+{
+	width: 100%;
+	height: 100%;	
+}
+
+.bottom-block {
+  display: block;
+  position: relative;
+  background-color: rgba(255, 235, 169, 0.25);
+  height: 85px;
+  width: 100%; 
+ }
+
+.container 
+{
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: 2px solid #aad1f9;
+  transition: opacity  0.1s linear;
+  border-top: 0px; 
+  }
+.bottom-block > span {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 25px;
+  font-size: 0.9em; }
+md-progress-linear {
+  padding-top: 10px;
+  margin-bottom: 20px; }

@@ -1,0 +1,42 @@
+ <md-card>
+            <md-card-content class="cards">
+                 <div layout="row">
+                     <md-input-container flex>
+                      <label>Activity Unit:</label>
+                      <md-select ng-model="unit" id="unit" ng-change="selected()">
+                          <md-option  ng-repeat="unit in units track by $index" id="{{unit.name}}" value="{{unit.name}}" ng-click='UnitSelected(unit.name)' >{{unit.name}}</md-option>
+                       </md-select>
+                    </md-input-container>
+                     <md-input-container flex>
+                      <label>Activity Unit, Chapter:</label>
+                      <md-select ng-model="chapter" id="chapter" <?php if($_GET['unit'] == NULL){echo 'ng-disabled="true"';} ?>>
+                          <md-option  ng-repeat="chapter in chapters" ng-click='ChapterSelected(chapter.name)' value="{{chapter.name}}">{{chapter.name}}</md-option>
+                       </md-select>
+                    </md-input-container>
+                    <md-button class="md-fab md-primary" aria-label="bookmark activity" ng-click="Bookmark()" title="Bookmark your actvity selection"><i class="fa fa-bookmark fa-2x"></i></md-button> 
+                </div>
+                
+                
+                
+            </md-card-content>
+        </md-card>
+        
+        <!--<md-card id="selecter" ng-view>
+            <md-card-content class="cards">
+                 <div layout="column">
+                    <uib-accordion close-others="true">
+                        <div ng-repeat="top in topLevel">
+                           		
+                                <uib-accordion-group heading="{{top.name}}" panel-class="panel-default">
+                           			<div class="list-group sub" ng-repeat="subMenu in top.subMenus">
+                                    	<a href="#" class="list-group-item subItem" ng-click="SendData(top.name,subMenu.name)" id="{{subMenu.id}}">{{subMenu.name}}</a>
+                                	</div>
+                           		</uib-accordion-group>
+                           </div>
+                    </uib-accordion>                                      
+                 </div>
+                
+                
+                
+            </md-card-content>
+        </md-card>-->

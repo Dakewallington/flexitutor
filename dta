@@ -1,0 +1,189 @@
+	$scope.units = 
+		[
+			<?php 
+				// going request a querry to database
+				
+				$q = "SELECT name FROM activity WHERE parentMenu='unit' ";
+				$run = mysqli_query($dbc,$q);
+				$num = mysqli_num_rows($run);
+				$i=0;
+				$num--; //if say there 3 menus it place 3 then were array include 0 as 1 so need remove one
+				while($data = mysqli_fetch_array($run))
+				{	
+					echo "{";
+					if($i < $num)
+					{
+						echo 'id:'. $i .',name:"' . $data['name'] . '"},';	
+					}
+					else
+					{
+						echo 'id:'. $i .',name:"' . $data['name'] . '"}';	
+					}
+					$i++;	
+				}
+				
+			?>
+		];
+		$scope.UnitSelected = function(name)
+		{
+			var url = 'activity.php'+ "?unit=" + name;
+			location.replace(url);
+		}
+			
+		$scope.unit = 
+		<?php
+			if($_GET['unit'] != NULL)
+			{
+				echo "'" . $_GET['unit'] . "';";
+			}
+			else
+			{
+				echo 'null;';	
+			}
+		?>
+		
+		
+		$scope.ChapterSelected = function(name)
+		{
+			var url = 'activity.php?activity=selecter&unit=' + $scope.unit + '&subjectID=' + name;
+			location.replace(url);
+		}
+		
+		$scope.unit = 
+		<?php
+			if($_GET['unit'] != NULL)
+			{
+				echo "'" . $_GET['unit'] . "';";
+			}
+			else
+			{
+				echo 'null;';	
+			}
+		?>
+		
+		$scope.chapters = 
+		<?php 
+			if($_GET['unit'] == NULL)
+			{
+				echo 'null;';
+			}
+			else
+			{
+			
+				$q = "SELECT name FROM activity WHERE parentMenu='". $_GET['unit'] ."' ";
+				$run = mysqli_query($dbc,$q);
+				$num = mysqli_num_rows($run);
+				$i=0;
+				$num--; //if say there 3 menus it place 3 then were array include 0 as 1 so need remove one
+				echo '[';
+				while($data = mysqli_fetch_array($run))
+				{	
+					echo "{";
+					if($i < $num)
+					{
+						echo 'id:'. $i .',name:"' . $data['name'] . '"},';	
+					}
+					else
+					{
+						echo 'id:'. $i .',name:"' . $data['name'] . '"}';	
+					}
+					$i++;	
+				}
+				echo '];';
+			}
+			
+		?>;
+		$scope.chapter = 
+		<?php
+			if($_GET['subjectID'] != NULL)
+			{
+				echo "'" . $_GET['subjectID'] . "';";
+			}
+			else
+			{
+				echo 'null;';	
+			}
+		?>
+		if($scope.chapter != null && $scope.unit != null)
+		{
+			$("#selecter").fadeIn(100);
+		}
+		else
+		{
+			$("#selecter").fadeOut(100);
+			
+		}
+		$scope.topLevel = 
+		<?php
+			
+			
+				$q = "SELECT name FROM activityChapterMenu WHERE menuLevel='top' ";
+				$run = mysqli_query($dbc,$q);
+				$num = mysqli_num_rows($run);
+				$i=0;
+				$num--; //if say there 3 menus it place 3 then were array include 0 as 1 so need remove one
+				echo '[';
+				while($data = mysqli_fetch_array($run))
+				{	
+					echo '{"id": ' . $i . ', ';
+					echo '"name": "' . $data['name'] . '", ';
+					echo '"subMenus": [';
+					
+					$i2 = 0;
+					$q2 = "SELECT name FROM activityChapterMenu WHERE menuLevel='" . $data['name'] ."' ";
+					$run2 = mysqli_query($dbc,$q2);
+					$num2 = mysqli_num_rows($run2);
+					$num2--;
+					
+					while($data2 = mysqli_fetch_array($run2))
+					{
+						echo '{';
+						echo '"id": "' . $i .'-' . $i2 . '", ';
+						echo '"name": "' . $data2['name'] . '" ';
+						if($i2 < $num2)
+						{
+							echo '},';	
+						}
+						else
+						{
+							echo '}';	
+						}
+						$i2++;
+					}
+					
+					if($i < $num)
+					{
+						echo ']},';	
+					}
+					else
+					{
+						echo ']}';	
+					}
+					$i++;
+				}
+				echo '];';
+				
+				
+		?>
+		$scope.Bookmark = function()
+		{
+			var bookmarkUnit = $scope.unit;
+			var bookmarkChapter = $scope.chapter;
+			
+			if(bookmarkUnit != null)
+			{
+				document.cookie = "unit=" + bookmarkUnit;
+			}
+			
+			if(bookmarkChapter != null)
+			{
+				document.cookie = "chapter=" + bookmarkChapter;	
+			}
+		}
+		
+		$scope.SendData = function(topMenu,subMenu)
+		{
+			//alert(topMenu);
+			var url = 'activity.php?activity=cards&unit=' + $scope.unit + '&subjectID=' + $scope.chapter +'&exerciseSubject=' + topMenu + '&exerciseTopic=' + subMenu;
+			location.replace(url);
+		}
